@@ -1,0 +1,80 @@
+### Java中的CAS（乐观锁）
++ CAS就是Compare and Swap的意思，比较并操作。CAS是乐观锁技术，很多CPU都直接支持。
++ 当多个线程尝试使用CAS同时更新同一个变量时，只有其中一个线程能更新变量的值，而其它线程都失败，失败的线程并不会被挂起，而是被告知这次竞争中失败，并可以再次尝试。
+CAS有三个操作数，内存值V，旧的预期值A，要修改的新值B。当且仅当预期值A和内存值V相同时，将内存值V修改为B，否则什么都不做。
++ java.util.concurrent.atomic包下面的所有的原子变量类型中，如AtomicInteger
+
+### 乐观锁ABA问题
++ 如果V的值先由A变成B，再由B变成A，那么仍然认为是发生了变化，并需要重新执行算法中的步骤。
++ 解决方法：不是更新某个引用的值，而是更新两个值，包括一个引用和一个版本号，即使这个值由A变成B，然后由B变成A，版本号是不同的。
+AtomicStampedReference和AtomicMarkableReference支持在两个变量上执行原子的条件更新。
++ ABA问题产生场景：
+```txt
+1. 一个单向链表，栈顶为A，这时线程T1已经知道A.next = B，然后希望用CAS将栈顶替换为B，`head.compareAndSet(A, B);`
+2. 在T1执行上面这条指令之前，线程T2介入，将A、B出栈，再把D、C、A压栈，此时堆栈结构为：A -> C -> D，而此时对象B处于游离状态。
+3. 此时轮到线程T1执行CAS操作，监测发现栈顶仍为A，所以CAS成功，栈顶变为B，但实际上B.next = null，所以此时的情况变为：堆栈中只有B一个元素，C和D
+```
++ 测试代码示例：参考AtomicABA
+
+### CAS高并发问题
++ 以AtomicInteger为例，在非常高的并发下，compareAndSet会很大概率失败，因此导致了此处CPU不断的自旋，对CPU资源造成浪费。解决方案：
+当CAS失败后，对线程park，减少多线程竞争导致的频繁CAS失败，更进一步的导致CPU自旋，浪费CPU的运算能力。具体park的时间，需要自己在
+真机环境下多次测试，获取一个实际可以使用的最佳值。
++ 改善代码：
+```java
+public class AtomicBetter {
+    AtomicInteger ai = new AtomicInteger();
+
+    public int incrementAndGet() {
+        for(;;) {
+            int current = ai.get();
+            int next = current + 1;
+            if (compareAndSet(current, next))
+                return next
+        }
+    }
+}
+
+private boolean compareAndSet(int current int next) {
+    if (ai.compareAndSet(current, next)) {
+        return true;
+    } else {
+        LockSupport.parkNanos(1);
+        return false;
+    }
+}
+```
+
+### AtomicInteger核心代码解析
+```java
+public final int incrementAndGet() {
+    for(;;) {
+        int current = get();
+        int next = current + 1;
+        if (compareAndSet(current, next)) {
+            return next;
+        }
+    }
+}
+```
+
+上述代码中，先获取当前value属性值，`int current = get();`，然后将value加1，赋值给一个局部变量next，`int next = current + 1;`，这两部都是非线程安全的。
+但是内部有一个死循环，不断去做compareAndSet操作，直到返回成功为止。具体看如下代码：
+
+```java
+public final boolean compareAndSet(int expect, int update) {
+    return unsafe.compareAndSwapInt(this, valueOffset, expect, update);
+}
+```
+
+
+
+
+### Java中的悲观锁
+
+
+
+### 乐观锁和悲观锁的区别和应用场景
++ 乐观锁：不加锁，假设冲突去完成某项操作，如果因为冲突失败就重试，直到成功为止。
++ 悲观锁：每次操作都加锁。
++ 应用场景：当数据争用不严重的时候，乐观锁效果好。

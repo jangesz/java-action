@@ -1,0 +1,15 @@
+mvn archetype:generate -DgroupId=org.tic -DartifactId=org-tic-concurrent -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DinteractiveMode=false -X
+
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-concurrent-lock -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
+
+
+
+
+
+
+
+
+
+
+
+

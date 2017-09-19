@@ -1,0 +1,10 @@
+### JSESSIONID与cookie是什么关系？
++ 当第一次request server时，server产生JSESSIONID对应的值为1，通过http header set-cookie，传递给browser。browser检测到http
+response header里带set-cookie，那么browser就会create一个cookie。key = JSESSIONID，value = 1。而后的每次请求，browser都会
+把cookie里的键值对，放到http request header里，传递给server。
+
++ 当在server端调用http.getSession()方法时，server会先从http request header里解析出来JSESSIONID的值，再从一个Map容器里去找
+有没有value，如果没有，就会产生一个HttpSession对象，放到这个Map容器里，同时设置一个最大生存时间。HttpSession你也可以把它
+想象成是一个Map，可以getAttribute()，也可以setAttribute()。
+
+### 分布式session如何实现
