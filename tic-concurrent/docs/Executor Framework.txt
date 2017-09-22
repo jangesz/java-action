@@ -1,0 +1,7 @@
+### tic-concurrent-threadpool
+1. Executor Framework（执行者框架）是一种机制，允许你将线程的创建、执行分离，它是基于Executor和ExecutorService接口及其实现这两个接口的ThreadPoolExecutor类。
+它有一个内部的线程池和提供允许你提交两种任务给线程池执行的方法。
+
+2. 定制ThreadPoolExecutor类
+
+3. 原理分析：

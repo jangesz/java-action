@@ -1,0 +1,30 @@
+## 下载
+http://www.lua.org/download.html
+
+## 上传&解压
+```bash
+tar zxvf lua-5.3.4.tar.gz
+```
+
+## 安装依赖
+yum install readline-devel
+
+## 修改配置
+```bash
+vi Makefile
+# 修改INSTALL_TOP
+INSTALL_TOP=/usr/local/lua
+```
+
+## 编译安装
+make linux
+make install
+
+## 测试
+``bash
+lua
+```
+
+## 简单demo
+
+

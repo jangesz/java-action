@@ -2,7 +2,9 @@ mvn archetype:generate -DgroupId=org.tic -DartifactId=org-tic-concurrent -Darche
 
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-concurrent-lock -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
 
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-concurrent-async -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
 
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-concurrent-threadpool -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
 
 
 

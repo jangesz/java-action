@@ -1,0 +1,40 @@
+1. Executors创建线程池共有如下几个方法：
+//创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO，LIFO，优先级)执行
+Executors.newSingleThreadExecutor();
+Executors.newSingleThreadExecutor(new MyThreadFactory());
+
+Executors.newSingleThreadScheduledExecutor();
+Executors.newSingleThreadScheduledExecutor(new MyThreadFactory());
+
+//创建一个定长线程池，支持定时及周期性任务执行
+Executors.newScheduledThreadPool(2);
+Executors.newScheduledThreadPool(2, new MyThreadFactory());
+
+//创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程
+Executors.newCachedThreadPool();
+Executors.newCachedThreadPool(new MyThreadFactory());
+
+//创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待
+Executors.newFixedThreadPool(2);
+Executors.newFixedThreadPool(2, new MyThreadFactory());
+
+Executors.newWorkStealingPool();
+
+
+2. 默认情况下Executors创建线程池的使用使用的是默认的Executors.defaultThreadFactory()，
+如果想要自定义ThreadFactory，可以实现这个接口，实现newThread方法，默认的defaultThreadFactory不够友好。
+如果需要自己为线程池定义名字、优先级等，可以尝试使用自定义的ThreadFactory去创建线程池。
+
+private class MyThreadFactory implements ThreadFactory {
+    @Override
+    public Thread newThread(Runnable r) {
+        return null;
+    }
+}
+
+
+3. Executors.shutdown
+当executor执行了一个任务后，Java进程没有停止！Executors必须显示的停止，否则它们将继续监听新的任务。
+
+可以放在finally块中，调用，executors.shutdown()，这个方法会等待正在执行的任务执行完后shutdown。而shutdownNow()方法则会立即
+终止（终止所有正在执行的任务，并立即关闭executor）

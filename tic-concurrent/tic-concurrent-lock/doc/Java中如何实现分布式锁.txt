@@ -8,9 +8,38 @@
 + 基于数据库实现分布式锁
 + 基于缓存（redis、memcached，tair）实现分布式锁
 + 基于Zookeeper实现分布式锁（paxos算法）
++ 使用第三方
 
 ### 选择演示方案
++ 选择使用redis实现分布式锁
 
+### 演示方案原理
++ 使用Redis实现分布式锁的原理是：首先，Redis是单进程单线程模式，采用队列模式将并发访问变成串行访问，且多客户端对Redis的连接并不存在竞争关系。
++ Redis的SETNX命令可以方便的实现分布式锁，SETNX命令：
+```bash
+SETNX key value
+# 将key的值设为value，当且仅当key不存在。若给定的key已经存在，则SETNX不做任何动作。
+# 设置成功，返回1；设置失败，返回0。
+
+# 举个例子
+# 检查distjob是否存在：不存在
+127.0.0.1:6379> exists distjob
+(integer) 0
+
+# distjob设置成功：返回1
+127.0.0.1:6379> setnx distjob "payjob"
+(integer) 1
+
+# 尝试覆盖distjob：返回失败
+127.0.0.1:6379> setnx distjob "notifyjob"
+(integer) 0
+
+# 没有被覆盖：返回payjob
+127.0.0.1:6379> get distjob
+"payjob"
+```
+
++
 
 ### 方案实现步骤
 
@@ -21,4 +50,43 @@
 ### 方案测试
 
 
+
+### 使用第三方
+
 ### 总结
+
+### 参考
++ http://www.cnblogs.com/0201zcr/p/5942748.html
++
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
