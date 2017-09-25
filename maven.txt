@@ -8,8 +8,9 @@ mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-concurrent-threadpool 
 
 
 
+mvn archetype:generate -DgroupId=org.tic -DartifactId=org-tic-netty -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DinteractiveMode=false -X
 
-
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-netty-basic -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
 
 
 

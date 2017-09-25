@@ -183,5 +183,6 @@
 
     <modules>
     <module>tic-concurrent</module>
+    <module>tic-netty</module>
   </modules>
 </project>

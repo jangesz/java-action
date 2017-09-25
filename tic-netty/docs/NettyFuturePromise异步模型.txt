@@ -1,0 +1,20 @@
+1. Netty文档说明Netty的网络操作都是异步的，在源码上大量使用了Future/Promise模型。
+Netty的Promise继承结构如下：
+Promise<V> extends Future<V>
+Future<V> extends java.util.concurrent.Future<V>
+
+其中，Netty自己定义的Future<V>扩展了Java的Future<V>，在此基础上扩展了许多方法，最主要的改进就是增加了监听器Listener接口，通过监听器可以让异步执行更加有效率，
+不需要通过get来等待异步执行结束，而是通过监听器回调来精确地控制异步执行结束的时间点。方法名和定义分别如下：
+Netty Future<V> Methods：
+
+
+
+2. ChannelFuture
+ChannelFuture接口扩展了Netty的Future接口，表示一种没有返回值的异步调用，同时关联了Channel，跟一个Channel绑定。
+ChannelFuture extends Future<Void>
+
+3. Netty中的IO操作都是异步的，包括bind、write、connect等操作会简单的返回一个ChannelFuture，调用者并不能立刻获得结果。也就是说我们在发送完消息后，netty内部是采用
+线程池去处理，方法立即返回了，但有时候我们需要外部方法等待服务器的响应，整个过程需要同步处理，那么就需要将异步调用转为同步调用，原理很简单，就是在调用异步方法后，
+主线程阻塞，直到异步方法返回结果。返回的ChannelFuture对象，会有一些信息，包括I/O执行状态的结果，但此时不能保证真正的I/O操作已经完成。推荐使用addListener(ChannelFutureListener)
+异步得到通知当一个I/O操作完成后，做后续任务，而不是通过调用await方法（降低吞吐量）。但如果你想要业务场景是必须先执行A，然后同步执行B（异步通知不合适的场景），使用
+await是比较方便的。但await有一个限制，调用await方法的线程不能是I/O线程（work线程），否则会抛出一个异常，避免死锁。
