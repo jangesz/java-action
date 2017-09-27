@@ -1,0 +1,28 @@
+http://www.importnew.com/1993.html
+
+1. 新生代
+用于保存那些第一次被创建的对象，他可以被分为三个空间：
+    1. 一个伊甸园空间（Eden）
+    2. 两个幸存者空间（Survivor）
+执行顺序如下：
+    1. 绝大多数刚刚被创建的对象会存放在伊甸园空间。
+    2. 在伊甸园空间执行了第一次GC之后，存活的对象被移动到其中一个幸存者空间。
+    3. 此后，在伊甸园空间执行GC之后，存活的对象会被堆积在同一个幸存者空间。
+    4. 当一个幸存者空间饱和，还在存活的对象会被移动到另一个幸存者空间。之后会清空已经饱和的那个幸存者空间。
+    5. 在以上的步骤中重复几次依然存活的对象，就会被移动到老年代。
+
+    GC执行前后对比图：
+    http://jd-private-all.oss-cn-hangzhou.aliyuncs.com/blog/javagc/minorGC.png
+
+2. 老年代
+老年代空间的GC事件基本上是在空间已满时发生，执行的过程根据GC类型不同而不同，因此，了解不同的GC类型将有助于你理解本节的内容。
+JDK7一共有5种GC类型：
+1. Serial GC
+2. Parallel GC
+3. Parallel Old GC (Parallel Compacting GC)
+4. Concurrent Mark & Sweep GC  (or “CMS”)
+5. Garbage First (G1) GC
+
+算法步骤（mark-sweep-compact）
+    1. 算法的第一步是标记老年代中依然存活对象。（标记）
+    2. 从头开始检查堆内存空间，并且只留下依然幸存的对象。（清理）

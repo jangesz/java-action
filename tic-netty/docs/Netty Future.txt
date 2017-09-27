@@ -1,0 +1,56 @@
+1. ChannelFuture对象状态只有uncompleted和completed。当一个I/O操作开始时，一个新的ChannelFuture实例被创建，此时它处于uncompleted状态——非失败、非成功、非取消。
+因为真正的I/O操作还没有完成。一旦I/O操作完成，那么ChannelFuuture的状态被设置成completed，而结果是三种可能：操作成功、操作失败、操作被取消。
+
+
+2. Netty强烈建议直接通过添加监听器的方式获取I/O操作结果，或者进行后续的相关操作。GenericFutureListener。
+
+3. GenericFutureListener把ChannelFuture对象当做方法的入参，如果用户需要做上下文相关的操作，需要将上下文信息保存到对应的ChannelFuture中。
+
+4. Netty为什么推荐使用监听器的方式去获取I/O操作的结果？
+4.1 首先，Netty中的所有I/O都是异步的
+4.2 其次，当发起I/O操作后，完成的时间是无法预测的，如果不设置超时时间，它会导致调用线程长时间被阻塞，甚至挂死。而设置超时时间，时间又无法精确预测。利用异步通知机制回调
+GenericFutureListener是最佳的解决方案，它的性能最优。
+4.3 需要注意的是：不要在ChannelHandler中调用ChannelFuture的await()方法，这会导致死锁。原因是发起I/O操作之后，由I/O线程负责异步发起I/O操作的用户线程，如果I/O线程和用户
+线程是同一线程，就会导致I/O线程等待自己通知操作完成，这就导致了死锁，这跟经典的两个线程互相等待死锁不同，属于自己把自己挂死。
+4.4 异步I/O有两类超时：一个是TCP层面的I/O超时，另一个是业务逻辑层面的操作超时。
+    a. I/O超时时间设置：Bootstrap b; b.option(ChannelOption.CONNECT_TIMEOUT_MILLS, 10000);
+    b. ChannelFuture超时时间设置：ChannelFuture f = b.connect(...); f.awaitUninterruptibly(10, TimeUnit.SECONDS);
+    需要指出的是：ChannelFuture超时并不代表I/O超时，这意味着ChannelFuture超时后，如果没有关闭连接资源，随后连接依旧可能会成功，这会导致严重的问题。所以通常情况下，必须
+    要考虑究竟是设置I/O超时还是ChannelFuture超时。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
