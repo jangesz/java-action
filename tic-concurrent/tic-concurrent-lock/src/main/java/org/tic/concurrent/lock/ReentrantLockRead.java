@@ -1,5 +1,6 @@
 package org.tic.concurrent.lock;
 
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -13,12 +14,17 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ReentrantLockRead {
 
     private static ReentrantLock lock = new ReentrantLock();
+    private static Condition condition = lock.newCondition();
 
+    public static void main(String[] args) throws InterruptedException {
+//        lock.lock();
+//        lock.unlock();
 
-    public static void main(String[] args) {
-        lock.lock();
+        condition.await();
 
-        lock.unlock();
+        condition.signal();
+
     }
+
 
 }
