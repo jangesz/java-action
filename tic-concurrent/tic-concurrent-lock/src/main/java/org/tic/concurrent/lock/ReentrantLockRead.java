@@ -20,6 +20,8 @@ public class ReentrantLockRead {
 //        lock.lock();
 //        lock.unlock();
 
+        lock.lock();
+        lock.unlock();
         condition.await();
 
         condition.signal();
