@@ -185,5 +185,7 @@
     <module>tic-concurrent</module>
     <module>tic-netty</module>
     <module>tic-javagc</module>
+    <module>tic-java8</module>
+    <module>tic-rxjava</module>
   </modules>
 </project>
