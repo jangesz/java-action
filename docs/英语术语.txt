@@ -1,1 +1,33 @@
 accquire：获得
+seasoned 经验丰富的
+composed 组成
+comprehend 理解
+illustrated 说明
+fictional 虚构的、小说的
+callback-oriented 回调为主
+abstractions 抽象
+leveraged 促使...改变，杠杆
+evident 明显的、昭著、明白的
+streams of processed events 处理事件流
+adopt 采用、采取
+Eventually 最终
+opted 选择
+unopinionated
+opinionated 自以为是
+encapsulating 疯转
+decoupling 解耦
+Refactoring 重构
+cope 处理 cope with
+plumbing 管道工程
+Autonomous 自治
+Asynchronous 异步的
+Resilient 有弹性的
+Elastic 弹性
+disappointed 失望
+delivery 传送
+senmantics 特征
+contrast 对比
+
+
+
+vertx-service-proxy是为了把服务暴露在eventbus上，以便其他组件能够消费这些服务。

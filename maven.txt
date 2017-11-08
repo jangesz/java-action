@@ -36,3 +36,10 @@ mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx -DarchetypeArtif
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-reactive-microservice -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DinteractiveMode=false -X
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-reactive-microservice-hello-http -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-reactive-microservice-hello-consumer -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
+
+//vertx-examples
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-examples -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DinteractiveMode=false -X
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-examples-eventbus-basic -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-examples-eventbus-cluster -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-examples-eventbus-socket -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-examples-eventbus-socket-client -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X

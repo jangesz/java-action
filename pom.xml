@@ -189,5 +189,6 @@
     <module>tic-rxjava</module>
     <module>tic-vertx</module>
     <module>tic-vertx-reactive-microservice</module>
+    <module>tic-vertx-examples</module>
   </modules>
 </project>

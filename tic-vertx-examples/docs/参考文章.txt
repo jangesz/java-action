@@ -1,0 +1,16 @@
+http://blog.csdn.net/it_ontway/article/details/52067357
+
+Vertx：eventBus模块间通信-cluster
+http://blog.csdn.net/u012582402/article/details/74536113
+
+vert.x线程模型揭秘
+http://www.importnew.com/23334.html
+
+Vert.x 异步Actor框架实战记录 - Part1概念介绍
+http://www.jianshu.com/p/d44cce1ac843
+
+技术职位
+http://gad.qq.com/article/detail/35585?sessionUserType=BFT.PARAMS.241896.TASKID&ADUIN=394809336&ADSESSION=1510103022&ADTAG=CLIENT.QQ.5545_.0&ADPUBNO=26750
+
+Vert.x 蓝图 - Micro-Shop 微服务实战
+http://www.sczyh30.com/vertx-blueprint-microservice/cn/index.html#展示时间-

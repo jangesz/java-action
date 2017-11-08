@@ -1,0 +1,46 @@
+Verticle
+	Verticle有点类似Actor模型，也可以实现并发的，可扩展的，易于发布的模型
+
+
+
+EventBus
+1. 基础概念  每一个Vert.x实例都有一个单独的EventBus实例。您的应用中的不同部分通过EventBus相互通信，无论它们使用哪一种语言实现，无论它们在同一个Vert.x实例中或在不同的Vert.x实例中。甚至可以通过桥接的方式允许在浏览器中运行的客户端JavaScript在相同的EventBus上通信。
+
+	1.1 同一个Vert.x实例中互相通信：直接使用vertx.eventBus来发布消息、消费消息
+		查看示例：tic-vertx-examples-eventbus-basic
+			example01：测试eventBus.send点对点发送，只有一个Verticle能够消费
+			example02：测试eventBus.publish广播，所有Verticle都能消费掉
+			example03：测试两个Vert.x实例是否能够通过EventBus通信（没有集群）
+		
+	1.2 不同Vert.x实例中互相通信：启动集群模式的EventBus。
+		EventBus不仅仅存在于单个Vert.x实例中，通过您在网络上将不同的Vert.x实例集群在一起，它可以形成一个单一的、分布式的EventBus。
+		
+		查看示例：tic-vertx-examples-eventbus-cluster
+
+2. EventBus处理器的自动清理
+	若您在Verticle中注册了Event Bus的处理器，那么这些处理器在Verticle被撤销的时候会自动被注销。
+
+3. 配置EventBus
+	配置EventBus对于集群模式运行的EventBus非常有用。EventBus使用TCP连接发送和接收消息，因此可以通过EventBusOptions对TCP连接进行全面的配置。
+	由于EventBus同时作用客户端和服务器，因此这些配置近似于NetClientOptions和NetServerOptions。
+
+4. 设置EventBus的消息头
+	DeliveryOptions options = new DeliveryOptions();
+	options.addHeader("some-header", "some-value");
+	eventBus.send("address", "some message content", options);
+
+5. EventBus消息对象Message
+	Message::body对应发送或发布的对象
+	Message::headers对应消息的头
+
+x. Event Bus写处理器
+	每个 Socket 会自动在Event Bus中注册一个处理器，当这个处理器中收到任意 Buffer 时，它会将数据写入到 Socket。
+	
+	这意味着您可以通过向这个地址发送 Buffer 的方式，从不同的 Verticle 甚至是不同的 Vert.x 实例中向指定的 Socket 发送数据。
+	
+	处理器的地址由 writeHandlerID 方法提供。
+	
+	参考示例：
+		tic-vertx-examples-eventbus-socket（服务端）
+		tic-vertx-examples-eventbus-socket-client（客户端）
+

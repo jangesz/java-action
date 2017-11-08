@@ -19,7 +19,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <vertx.version>3.5.0</vertx.version>
-        <main.verticle>org.tic.vertx.reactive.microservice.hello.http.HelloMicroservice</main.verticle>
+        <main.verticle>org.tic.vertx.reactive.microservice.hello.http.HelloConsumerMicroserviceEventBusRx</main.verticle>
     </properties>
 
     <dependencyManagement>
@@ -53,7 +53,7 @@
         </dependency>
         <dependency>
             <groupId>io.vertx</groupId>
-            <artifactId>vertx-service-proxy</artifactId>
+            <artifactId>vertx-infinispan</artifactId>
         </dependency>
 
         <!-- jackson vertx.core 补充 annotation -->

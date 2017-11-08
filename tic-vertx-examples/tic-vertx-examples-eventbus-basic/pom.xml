@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.tic</groupId>
-        <artifactId>tic-vertx-reactive-microservice</artifactId>
+        <artifactId>tic-vertx-examples</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>org.tic</groupId>
-    <artifactId>tic-vertx-reactive-microservice-hello-http</artifactId>
+    <artifactId>tic-vertx-examples-eventbus-basic</artifactId>
     <version>0.0.1</version>
-    <name>tic-vertx-reactive-microservice-hello-http</name>
+    <name>tic-vertx-examples-eventbus-basic</name>
     <url>http://maven.apache.org</url>
     <properties>
         <java.version>1.8</java.version>
@@ -19,7 +19,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <vertx.version>3.5.0</vertx.version>
-        <main.verticle>org.tic.vertx.reactive.microservice.hello.http.HelloMicroservice</main.verticle>
+        <main.verticle>org.tic.vertx.examples.eb.socket.SocketClientVerticle</main.verticle>
     </properties>
 
     <dependencyManagement>
@@ -39,63 +39,17 @@
             <groupId>io.vertx</groupId>
             <artifactId>vertx-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.vertx</groupId>
-            <artifactId>vertx-rx-java</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.vertx</groupId>
-            <artifactId>vertx-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.vertx</groupId>
-            <artifactId>vertx-infinispan</artifactId>
-        </dependency>
-
         <!-- jackson vertx.core 补充 annotation -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>2.9.0</version>
         </dependency>
 
-        <!-- jdbc dependecines -->
-        <dependency>
-            <groupId>io.vertx</groupId>
-            <artifactId>vertx-jdbc-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>2.3.4</version>
-        </dependency>
-
-        <!-- tag::logger[] -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
-        </dependency>
-        <!-- end::logger[] -->
-
-        <!-- codegen -->
-        <dependency>
-            <groupId>io.vertx</groupId>
-            <artifactId>vertx-codegen</artifactId>
-            <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.vertx</groupId>
-            <artifactId>vertx-unit</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -162,16 +116,6 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                    <useIncrementalCompilation>false</useIncrementalCompilation>
-
-                    <annotationProcessors>
-                        <annotationProcessor>io.vertx.codegen.CodeGenProcessor</annotationProcessor>
-                    </annotationProcessors>
-                    <generatedSourcesDirectory>${project.basedir}/src/main/generated</generatedSourcesDirectory>
-                    <compilerArgs>
-                        <arg>-AoutputDirectory=${project.basedir}/src/main</arg>
-                    </compilerArgs>
-
                 </configuration>
             </plugin>
         </plugins>
