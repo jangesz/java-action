@@ -187,5 +187,7 @@
     <module>tic-javagc</module>
     <module>tic-java8</module>
     <module>tic-rxjava</module>
+    <module>tic-vertx</module>
+    <module>tic-vertx-reactive-microservice</module>
   </modules>
 </project>

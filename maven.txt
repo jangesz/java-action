@@ -28,3 +28,11 @@ mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-java8 -DarchetypeArtif
 
 //rxjava
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-rxjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
+
+//vertx-rxjava2-async-jdbc-etc-on
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
+
+//vertx-reactive-example
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-reactive-microservice -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DinteractiveMode=false -X
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-reactive-microservice-hello-http -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-reactive-microservice-hello-consumer -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
