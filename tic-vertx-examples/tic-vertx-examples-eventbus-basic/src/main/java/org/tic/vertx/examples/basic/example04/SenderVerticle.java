@@ -15,9 +15,7 @@ public class SenderVerticle extends AbstractVerticle {
 
         logger.debug(SenderVerticle.class.getName() + " has been deployed succeed!");
 
-        vertx.setPeriodic(2000, h -> {
-            sendBus("hello", "my name is vert.x");
-
+        vertx.setPeriodic(5000, h -> {
             vertx.eventBus().send("hello", "my name is vert.x", reply -> {
                 if (reply.succeeded()) {
                     logger.debug("receive reply message " + reply.result().body().toString());
@@ -28,9 +26,4 @@ public class SenderVerticle extends AbstractVerticle {
         });
 
     }
-
-    private void sendBus(String address, Object data) {
-        vertx.eventBus().send(address, data);
-    }
-
 }

@@ -35,13 +35,24 @@ public class HelloMicroservice extends AbstractVerticle {
 
         consumer.handler(message -> {
             logger.debug(" receive eventbus message " +  message.body());
+
+            double chaos = Math.random();
+
             JsonObject json = new JsonObject()
                     .put("served-by", HelloMicroservice.class.toString());
 
-            if (message.body().isEmpty()) {
-                message.reply(json.put("message", "hello"));
+            if (chaos < 0.6) {
+                if (message.body().isEmpty()) {
+                    message.reply(json.put("message", "hello"));
+                } else {
+                    message.reply(json.put("message", "hello " + message.body()));
+                }
+            } else if (chaos < 0.9) {
+                logger.warn("Returning a failure");
+
+                message.fail(500, "message processing failure");
             } else {
-                message.reply(json.put("message", "hello " + message.body()));
+                logger.warn("not replying");
             }
         });
 

@@ -27,6 +27,19 @@ disappointed 失望
 delivery 传送
 senmantics 特征
 contrast 对比
+chaos 混乱、紊乱
+transparency 透明度、透明、透明性
+mobility 移动性、流动性、机动性
+externalized 给...以外形、使客观化、使具体化
+rigid 僵硬的、严格的、死板的、刚硬的、顽固的
+contradict 反驳、驳斥、否认、与...矛盾、与...抵触
+addressable 可设定地址的、可访问
+mobile 可移动的、行动自如的、易变的、l流动性的
+announce 宣布、述说、声称、声明、预告
+infrastructure 基础设施、基础建设
+withdraw 撤退、搬走、拿走、取（钱）
+interactions 互动、一起活动、合作、互相影响
+depicted 描述、描绘、描画
 
 
 

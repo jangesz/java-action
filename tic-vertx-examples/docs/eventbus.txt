@@ -33,6 +33,7 @@ EventBus
 	Message::body对应发送或发布的对象
 	Message::headers对应消息的头
 
+
 x. Event Bus写处理器
 	每个 Socket 会自动在Event Bus中注册一个处理器，当这个处理器中收到任意 Buffer 时，它会将数据写入到 Socket。
 	
