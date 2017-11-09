@@ -40,7 +40,54 @@ infrastructure 基础设施、基础建设
 withdraw 撤退、搬走、拿走、取（钱）
 interactions 互动、一起活动、合作、互相影响
 depicted 描述、描绘、描画
-
-
+cumbersome 麻烦
+semantic 语义的
+propagating 传播
+delegate 代表、委派
+encapsulates 封装
+mechanism 机制
+isolation 隔离
+affects 影响
+degraded 退化、被降级的、堕落的
+significant 重要的
+imply 意味着
+scenario 脚本、方案
+integrity 完整性
+idempotent 幂等
+repetitive 重复的
+failure 失败
+automaton 自动机
+elapses 逝去、消逝、过去
+merely 仅仅
 
 vertx-service-proxy是为了把服务暴露在eventbus上，以便其他组件能够消费这些服务。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
