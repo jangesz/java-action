@@ -43,3 +43,5 @@ mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-examples-eventbu
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-examples-eventbus-cluster -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-examples-eventbus-socket -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-examples-eventbus-socket-client -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-examples-docker-java -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-examples-docker-java-fatjar -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
