@@ -55,5 +55,8 @@
         <module>tic-vertx-examples-eventbus-basic</module>
     <module>tic-vertx-examples-eventbus-socket-client</module>
     <module>tic-vertx-examples-docker-java</module>
+    <module>tic-vertx-examples-service-discovery-provider</module>
+    <module>tic-vertx-examples-service-discovery-consumer</module>
+    <module>tic-vertx-examples-web-router</module>
   </modules>
 </project>

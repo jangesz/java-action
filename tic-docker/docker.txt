@@ -1,0 +1,14 @@
+1. 基本概念
+镜像（Image）
+容器（Container）
+仓库（Repository）
+
+2. Docker镜像
+操作系统分为内核和用户空间。对于Linux而言，内核启动后，会挂载root文件系统为其提供用户空间支持。
+
+而Docker镜像（Image），就相当于是一个root文件系统。
+
+3. Docker容器
+镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中 类 和 实例 的关系。
+
+容器的实质是进城

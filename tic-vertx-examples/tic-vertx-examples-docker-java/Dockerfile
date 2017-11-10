@@ -3,7 +3,7 @@
 # To build:
 #   docker build -t sample/vertx-java .
 # To run:
-#   docker run -t -i -p 8080:8080 sample/vertx-java .
+#   docker run -t -i -p 8080:8080 sample/vertx-java
 ###
 
 # Extend vert.x image
