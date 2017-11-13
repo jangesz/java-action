@@ -58,5 +58,6 @@
     <module>tic-vertx-examples-service-discovery-provider</module>
     <module>tic-vertx-examples-service-discovery-consumer</module>
     <module>tic-vertx-examples-web-router</module>
+    <module>tic-vertx-examples-service-discovery-common</module>
   </modules>
 </project>

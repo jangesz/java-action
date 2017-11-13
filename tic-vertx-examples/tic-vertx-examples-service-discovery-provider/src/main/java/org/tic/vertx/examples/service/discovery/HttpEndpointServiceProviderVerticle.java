@@ -3,6 +3,7 @@ package org.tic.vertx.examples.service.discovery;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.ext.web.Route;
 import io.vertx.ext.web.Router;
+import io.vertx.ext.web.RoutingContext;
 import io.vertx.servicediscovery.Record;
 import io.vertx.servicediscovery.ServiceDiscovery;
 import io.vertx.servicediscovery.types.HttpEndpoint;
@@ -22,7 +23,7 @@ public class HttpEndpointServiceProviderVerticle extends AbstractVerticle {
         Record record = HttpEndpoint.createRecord(API_NAME, "localhost", 9999, "/api/product");
 
         Router router = Router.router(vertx);
-        router.get("/api/product", this::apiProduct);
+        router.get("/api/product").handler(this::apiProduct);
 
         vertx.createHttpServer().requestHandler(router::accept)
                 .listen(9999);
@@ -36,8 +37,9 @@ public class HttpEndpointServiceProviderVerticle extends AbstractVerticle {
         });
     }
 
-    private void apiProduct() {
-
+    private void apiProduct(RoutingContext rc) {
+        logger.info("/api/product http endpoint request ok !");
+        rc.response().end("this is the response content, keep it !");
     }
 
 }

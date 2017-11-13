@@ -48,10 +48,10 @@ public class HttpEndpointServiceConsumerVerticle extends AbstractVerticle {
                 WebClient client = ar.result();
 
                 client.get("/api/product")
-                        .send(response -> {
-                            logger.info(response.result().body().toString());
-                            ServiceDiscovery.releaseServiceObject(discovery, client);
-                        });
+                    .send(response -> {
+                        logger.info(response.result().body().toString());
+                        ServiceDiscovery.releaseServiceObject(discovery, client);
+                    });
             } else {
                 logger.error("consumer get record by name " + API_NAME + " failed !");
             }

@@ -28,7 +28,22 @@ public class WebRouterNextExample02Verticle extends AbstractVerticle {
     }
 
     private void apiProductPart1(RoutingContext context) {
-        context.response().setChunked(true).write()
+        context.response().setChunked(true).write("route1 response\n");
+
+        // 3秒后调用下一个处理器
+        context.vertx().setTimer(3000, h -> context.next());
+    }
+
+    private void apiProductPart2(RoutingContext context) {
+        context.response().write("route2 response\n");
+
+        context.vertx().setTimer(3000, h -> context.next());
+    }
+
+    private void apiProductPart3(RoutingContext context) {
+        context.response().write("route3 response\n");
+
+        context.response().end();
     }
 
 }

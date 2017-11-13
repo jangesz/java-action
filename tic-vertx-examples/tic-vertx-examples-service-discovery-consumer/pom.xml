@@ -20,7 +20,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <vertx.version>3.5.0</vertx.version>
         <!-- http endpoint -->
-        <main.verticle>org.tic.vertx.examples.service.discovery.HttpEndpointServiceConsumerVerticle</main.verticle>
+        <!--<main.verticle>org.tic.vertx.examples.service.discovery.HttpEndpointServiceConsumerVerticle</main.verticle>-->
+        <main.verticle>org.tic.vertx.examples.service.discovery.EventBusServiceConsumerVerticle</main.verticle>
     </properties>
 
     <dependencyManagement>
@@ -37,6 +38,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.tic</groupId>
+            <artifactId>tic-vertx-examples-service-discovery-common</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-core</artifactId>
         </dependency>
@@ -47,6 +53,10 @@
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-service-discovery</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-service-proxy</artifactId>
         </dependency>
         <dependency>
             <groupId>io.vertx</groupId>
