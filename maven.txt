@@ -59,5 +59,7 @@ mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-examples-web-bas
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-examples-web-router -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-examples-web-subrouter -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
 
+//vertx-examples-serviceproxy
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-examples-serviceproxy-basic -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
 
 
