@@ -60,5 +60,6 @@
     <module>tic-vertx-examples-web-router</module>
     <module>tic-vertx-examples-service-discovery-common</module>
     <module>tic-vertx-examples-service-discovery-basic</module>
+    <module>tic-vertx-examples-jdbc-basic</module>
   </modules>
 </project>

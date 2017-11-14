@@ -4,6 +4,7 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.jdbc.JDBCClient;
+import io.vertx.ext.jdbc.spi.impl.HikariCPDataSourceProvider;
 import io.vertx.ext.sql.SQLConnection;
 import io.vertx.servicediscovery.Record;
 import io.vertx.servicediscovery.ServiceDiscovery;
@@ -12,26 +13,36 @@ import io.vertx.servicediscovery.types.JDBCDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class JDBCDatasourceSimpleServiceDiscoveryVerticle extends AbstractVerticle {
+public class JDBCDatasourceHikariMySQLServiceDiscoveryVerticle extends AbstractVerticle {
 
-    private static final Logger logger = LoggerFactory.getLogger(JDBCDatasourceSimpleServiceDiscoveryVerticle.class);
+    private static final Logger logger = LoggerFactory.getLogger(JDBCDatasourceHikariMySQLServiceDiscoveryVerticle.class);
 
     @Override
     public void start() throws Exception {
         ServiceDiscovery discovery = ServiceDiscovery.create(vertx);
 
-//        JsonObject conf = new JsonObject().put("driverClass", "org.hsqldb.jdbcDriver");
         JsonObject conf = new JsonObject()
-                .put("driver_class", "com.mysql.jdbc.Driver")
-                .put("user", "root")
+                // 这里通过provider_class来指定使用哪个数据库连接池
+                .put("provider_class", "io.vertx.ext.jdbc.spi.impl.HikariCPDataSourceProvider")
+                .put("driverClassName", "com.mysql.jdbc.Driver")
+                .put("jdbcUrl", "jdbc:mysql://192.168.2.242:3306/crux?useUnicode=true&amp;characterEncoding=UTF-8")
+                .put("username", "root")
                 .put("password", "minorfish")
-                .put("max_pool_size", 10);
+                .put("autoCommit", false)
+                .put("connectionTimeut", 30000)
+                .put("idleTimeout", 600000)
+                .put("maxLifetime", 1800000)
+                .put("maximumPoolSize", 10)
+                ;
 
-//        Record record = JDBCDataSource.createRecord("some-hsql-db",
-//                new JsonObject().put("url", "jdbc:hsqldb:file:target/dumb-db;shutdown=true"),
-//                new JsonObject().put("database", "some-raw-data"));
+                // 如果自己选定了某个数据库连接池，比如这里的HikariCP，那么配置信息一定要遵守HikariCP的配置
+                // 而不能还是使用Vert.x JDBC提供的配置属性，如下是错误的（因为在HikariCP中的配置信息不是这样的）
+                // .put("driver_class", "com.mysql.jdbc.Driver")
+                // .put("user", "root")
+                // .put("password", "minorfish")
+                // .put("max_pool_size", 10);
 
-        Record record = JDBCDataSource.createRecord("some-mysql-db",
+        Record record = JDBCDataSource.createRecord("hikari-mysql-datasource",
                 new JsonObject().put("url", "jdbc:mysql://192.168.2.242:3306/crux"),
                 new JsonObject().put("database", "some-raw-data"));
 
@@ -44,7 +55,7 @@ public class JDBCDatasourceSimpleServiceDiscoveryVerticle extends AbstractVertic
         });
 
         vertx.setTimer(3000, h -> {
-            discovery.getRecord(new JsonObject().put("name", "some-mysql-db"), ar -> {
+            discovery.getRecord(new JsonObject().put("name", "hikari-mysql-datasource"), ar -> {
                 if (ar.succeeded()) {
                     ServiceReference reference = discovery.getReferenceWithConfiguration(ar.result(), conf);
                     JDBCClient client = reference.get();
@@ -72,7 +83,6 @@ public class JDBCDatasourceSimpleServiceDiscoveryVerticle extends AbstractVertic
 
     public static void main(String[] args) {
         Vertx vertx = Vertx.vertx();
-        vertx.deployVerticle(JDBCDatasourceSimpleServiceDiscoveryVerticle.class.getName());
+        vertx.deployVerticle(JDBCDatasourceHikariMySQLServiceDiscoveryVerticle.class.getName());
     }
-
 }
