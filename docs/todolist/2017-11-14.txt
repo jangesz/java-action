@@ -1,0 +1,44 @@
+https://www.youtube.com/watch?v=MydhJVPEnzU
+
+End to End Application for Monitoring Real-Time Uber Data Using Apache APIs: Kafka, Spark, HBase – Part 3: Real-Time Dashboard Using Vert.x
+https://mapr.com/blog/monitoring-uber-with-spark-streaming-kafka-and-vertx/
+
+Vert.x and Spring – implementing fully functional microservices eco system in under 15 minutes.
+https://dreamix.eu/blog/java/vert-x-and-spring-implementing-fully-functional-microservices-eco-system-in-under-15-minutes
+
+Dynamic Routing in Serverless Microservice with Vert.x Event Bus
+http://vertx.io/blog/dynamic-routing-in-serverless-microservice-with-vert-x-event-bus/
+
+Asynchronous Microservices with Vert.x [good]
+https://piotrminkowski.wordpress.com/2017/08/24/asynchronous-microservices-with-vert-x/
+
+Understanding Vert.x Architecture - Part II [good]
+https://www.cubrid.org/blog/understanding-vertx-architecture-part-2
+
+Reactive services with Vertx3 and Scala
+https://medium.com/@toxicafunk/reactive-services-with-vertx3-and-scala-1e506acde696
+
+Service Discovery实现一个自定义的ServiceType
+https://streamdata.io/blog/implementing-a-custom-service-type-for-the-vertx-service-discovery/
+
+Vertx3 + Kotlin Tutorial for a REST API with a JBDC backend
+http://maballesteros.com/articles/vertx3-kotlin-rest-jdbc-tutorial/?utm_source=hashnode.com
+
+http://www.ijilei.com/4193
+
+如何用java 5分钟实现一个最简单的mysql代理服务器？
+http://dev.dafan.info/detail/215370?p=
+
+Kovert
+https://www.kotlinresources.com/library/kovert/
+
+Microservices Tech Stack with Spring and Vert.X
+https://keaplogik.blogspot.jp/2015/11/spring-boot-vertx-microservice-tech.html
+
+
+http://www.javashuo.com/tag/vertx
+
+http://vertxzgyhz674.xunart.com/mobile/201441.html
+
+https://groups.google.com/forum/?fromgroups#!forum/vertx-dev
+https://groups.google.com/forum/#!msg/vertx/_6oEcZLeIc0/TNLHBF1QfTsJ

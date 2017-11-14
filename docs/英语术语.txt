@@ -14,6 +14,7 @@ Eventually 最终
 opted 选择
 unopinionated
 opinionated 自以为是
+unopinionated 不是自以为是
 encapsulating 疯转
 decoupling 解耦
 Refactoring 重构
@@ -59,6 +60,41 @@ failure 失败
 automaton 自动机
 elapses 逝去、消逝、过去
 merely 仅仅
+stumble 绊倒、跌跌撞撞的、结巴、弄错、失足、偶然碰见
+achieve 实现
+accomplishing 完成（accomplish的现在分词）、达到（目的）、走完（路程、距离等）、使完美
+modular 模块化
+bound 跳、弹跳、限制、接壤
+uncommon 罕见的，不寻常的、uncommon problem
+Nevertheless 然而
+speculating 投机
+suspect 怀疑、不信任
+fine grained control 细粒度控制
+traverse 穿过、横贯、横切、横梁、通过
+eliminate 消除、排除、除掉、干掉
+transparently 透明、明亮地
+monolithic 单片、整体的、独块巨大的、庞大的
+modularised 模块化
+newbie 新手
+attractions 吸引、具有吸引力的事物、爱慕
+advantages 优势
+debate 辩论
+rock-solid 坚如磐石
+polyglot 通晓、使用多种语言的
+pleasantly 惊喜
+elaborate 精心制作的、详尽说明、变得复杂、详细制定、详尽阐述
+In addition 另外、此外、并且、除此之外
+standardized 标准化
+retrieve 检索、取回、恢复、重新得到
+philosophy 哲学
+comparison 比较
+internal structure 内部结构
+architecture 建筑学、体系结构、结构
+intercommunicate 互通、互通联络、互通消息
+sufficient 足够的、充足的、充分的
+Essential 本质、必要的、本质的、基本的、精华的
+workloads 工作负载、工作量、工作负担
+
 
 vertx-service-proxy是为了把服务暴露在eventbus上，以便其他组件能够消费这些服务。
 
@@ -66,9 +102,12 @@ vertx-service-proxy是为了把服务暴露在eventbus上，以便其他组件�
 
 
 
+句子：
+1. we want folks building independently without having to coordinate in one chunk of code
+我们希望开发者独立构建而不是在同一块代码中进行协调。
 
-
-
+2. Let’s dive right in.
+让我们深入进去吧？dive是潜水的意思
 
 
 

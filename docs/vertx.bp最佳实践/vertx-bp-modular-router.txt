@@ -1,0 +1,18 @@
+参考代码：
+    1. tic-vertx-bp-modular-route（单个Verticle，通过子路由挂载的方式实现，团队成员可以维护自己的路由管理，通过ServiceLoader加载子路由）推荐
+    2. tic-vertx-bp-modular-route-shared（共享路由，优点是：可以由多个Verticle分别来维护自身的路由，Verticle可以独立部署。这样可以在随意部署Verticle、或撤销Vertcile。
+
+关于动态路由、模块化路由设计方案
+参考文章：https://www.devcon5.ch/en/blog/2017/09/15/vertx-modular-router-design/
+
+vert-x3 issues：
+    https://github.com/vert-x3/vertx-web/issues/140
+    https://github.com/vert-x3/issues/issues/138
+    Tim fox(purplefox)建议使用单个Verticle：https://github.com/vert-x3/vertx-web/issues/140#issuecomment-114453027
+
+1. 单个Verticle部署（Single Verticle）
+    Router通过ServiceLoader挂载子路由的方式实现，这样可以让开发团队自己维护自己的子路由。最后部署的时候
+通过ServiceLoader一起加载到单个Verticle实例中即可实现全路由REST API。
+
+2. 共享路由（Shared Route）
+    看相关代码

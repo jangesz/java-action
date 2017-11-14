@@ -66,3 +66,19 @@ mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-examples-service
 //vertx-examples-jdbc
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-examples-jdbc-basic -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-examples-jdbc-hikari -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
+
+//vertx-bp(最佳实践）探索
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-bp -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DinteractiveMode=false -X
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-bp-modular-route -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-bp-modular-route-shared -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
+
+//about serverless
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-bp-serverless -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
+
+//vertx-demos-blog（vertx的简单DEMO）
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-demos -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DinteractiveMode=false -X
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-demos-blog -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
+
+//vertx-microservice（微服务系列）
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-microservice -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DinteractiveMode=false -X
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-microservice-demo01 -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
