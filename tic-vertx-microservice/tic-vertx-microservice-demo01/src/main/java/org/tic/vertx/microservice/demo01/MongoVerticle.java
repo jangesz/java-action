@@ -26,6 +26,8 @@ public class MongoVerticle extends AbstractVerticle {
             o.put("host", datasourceConfig.getString("host"));
             o.put("port", datasourceConfig.getInteger("port"));
             o.put("db_name", datasourceConfig.getString("db_name"));
+            o.put("username", datasourceConfig.getString("username"));
+            o.put("password", datasourceConfig.getString("password"));
             final MongoClient client = MongoClient.createShared(vertx, o);
             final AccountRepository service = new AccountRepositoryImpl(client);
             ProxyHelper.registerService(AccountRepository.class, vertx, service, "account-service");

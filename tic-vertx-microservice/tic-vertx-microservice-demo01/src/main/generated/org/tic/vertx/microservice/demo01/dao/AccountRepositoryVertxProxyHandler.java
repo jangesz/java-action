@@ -39,8 +39,11 @@ import io.vertx.serviceproxy.ProxyHelper;
 import io.vertx.serviceproxy.ProxyHandler;
 import io.vertx.serviceproxy.ServiceException;
 import io.vertx.serviceproxy.ServiceExceptionMessageCodec;
+import java.util.List;
 import org.tic.vertx.microservice.demo01.dao.AccountRepository;
 import org.tic.vertx.microservice.demo01.dao.Account;
+import io.vertx.core.Vertx;
+import io.vertx.ext.mongo.MongoClient;
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;
 
@@ -138,7 +141,7 @@ public class AccountRepositoryVertxProxyHandler extends ProxyHandler {
                 msg.reply(new ServiceException(-1, res.cause().getMessage()));
               }
             } else {
-              msg.reply(res.result() == null ? null : res.result().toJson());
+              msg.reply(new JsonArray(res.result().stream().map(r -> r == null ? null : r.toJson()).collect(Collectors.toList())));
             }
          });
           break;
@@ -166,7 +169,7 @@ public class AccountRepositoryVertxProxyHandler extends ProxyHandler {
                 msg.reply(new ServiceException(-1, res.cause().getMessage()));
               }
             } else {
-              msg.reply(res.result() == null ? null : res.result().toJson());
+              msg.reply(new JsonArray(res.result().stream().map(r -> r == null ? null : r.toJson()).collect(Collectors.toList())));
             }
          });
           break;
@@ -185,6 +188,8 @@ public class AccountRepositoryVertxProxyHandler extends ProxyHandler {
          });
           break;
         }
+
+
         default: {
           throw new IllegalStateException("Invalid action: " + action);
         }

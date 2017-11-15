@@ -32,8 +32,11 @@ import java.util.function.Function;
 import io.vertx.serviceproxy.ProxyHelper;
 import io.vertx.serviceproxy.ServiceException;
 import io.vertx.serviceproxy.ServiceExceptionMessageCodec;
+import java.util.List;
 import org.tic.vertx.microservice.demo01.dao.AccountRepository;
 import org.tic.vertx.microservice.demo01.dao.Account;
+import io.vertx.core.Vertx;
+import io.vertx.ext.mongo.MongoClient;
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;
 
@@ -82,7 +85,7 @@ public class AccountRepositoryVertxEBProxy implements AccountRepository {
     return this;
   }
 
-  public AccountRepository findAll(Handler<AsyncResult<Account>> resultHandler) {
+  public AccountRepository findAll(Handler<AsyncResult<List<Account>>> resultHandler) {
     if (closed) {
     resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
@@ -90,12 +93,16 @@ public class AccountRepositoryVertxEBProxy implements AccountRepository {
     JsonObject _json = new JsonObject();
     DeliveryOptions _deliveryOptions = (_options != null) ? new DeliveryOptions(_options) : new DeliveryOptions();
     _deliveryOptions.addHeader("action", "findAll");
-    _vertx.eventBus().<JsonObject>send(_address, _json, _deliveryOptions, res -> {
+    _vertx.eventBus().<JsonArray>send(_address, _json, _deliveryOptions, res -> {
       if (res.failed()) {
         resultHandler.handle(Future.failedFuture(res.cause()));
       } else {
-        resultHandler.handle(Future.succeededFuture(res.result().body() == null ? null : new Account(res.result().body())));
-                      }
+        resultHandler.handle(Future.succeededFuture(res.result().body().stream()
+            .map(o -> { if (o == null) return null;
+                        return o instanceof Map ? new Account(new JsonObject((Map) o)) : new Account((JsonObject) o);
+                 })
+            .collect(Collectors.toList())));
+      }
     });
     return this;
   }
@@ -119,7 +126,7 @@ public class AccountRepositoryVertxEBProxy implements AccountRepository {
     return this;
   }
 
-  public AccountRepository findByCustomer(String customerId, Handler<AsyncResult<Account>> resultHandler) {
+  public AccountRepository findByCustomer(String customerId, Handler<AsyncResult<List<Account>>> resultHandler) {
     if (closed) {
     resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
@@ -128,12 +135,16 @@ public class AccountRepositoryVertxEBProxy implements AccountRepository {
     _json.put("customerId", customerId);
     DeliveryOptions _deliveryOptions = (_options != null) ? new DeliveryOptions(_options) : new DeliveryOptions();
     _deliveryOptions.addHeader("action", "findByCustomer");
-    _vertx.eventBus().<JsonObject>send(_address, _json, _deliveryOptions, res -> {
+    _vertx.eventBus().<JsonArray>send(_address, _json, _deliveryOptions, res -> {
       if (res.failed()) {
         resultHandler.handle(Future.failedFuture(res.cause()));
       } else {
-        resultHandler.handle(Future.succeededFuture(res.result().body() == null ? null : new Account(res.result().body())));
-                      }
+        resultHandler.handle(Future.succeededFuture(res.result().body().stream()
+            .map(o -> { if (o == null) return null;
+                        return o instanceof Map ? new Account(new JsonObject((Map) o)) : new Account((JsonObject) o);
+                 })
+            .collect(Collectors.toList())));
+      }
     });
     return this;
   }

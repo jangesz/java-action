@@ -40,9 +40,13 @@ public class AccountServer extends AbstractVerticle {
         router.route(HttpMethod.POST, "/account").handler(BodyHandler.create());
         router.get("/account/:id").produces("application/json").handler(rc -> {
             repository.findById(rc.request().getParam("id"), res -> {
-                Account account = res.result();
-                logger.info("Found: {}", account);
-                rc.response().end(account.toString());
+                if (res.succeeded()) {
+                    Account account = res.result();
+                    logger.info("Found: {}", account);
+                    rc.response().end(account.toString());
+                } else {
+                    rc.response().end(res.cause().getMessage());
+                }
             });
         });
 
@@ -65,9 +69,14 @@ public class AccountServer extends AbstractVerticle {
         router.post("/account").produces("application/json").handler(rc -> {
             Account a = Json.decodeValue(rc.getBodyAsString(), Account.class);
             repository.save(a, res -> {
-                Account account = res.result();
-                logger.info("Created: {}", account);
-                rc.response().end(account.toString());
+                if (res.succeeded()) {
+                    Account account = res.result();
+                    logger.info("Created: {}", account);
+                    rc.response().end(account.toString());
+                } else {
+                    logger.error("Created failed: {}", res.cause().getMessage());
+                    rc.response().end(res.cause().getMessage());
+                }
             });
         });
 

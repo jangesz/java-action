@@ -49,5 +49,6 @@
     </dependencies>
   <modules>
     <module>tic-vertx-microservice-demo01</module>
+    <module>tic-vertx-microservice-demo02</module>
   </modules>
 </project>
