@@ -1,0 +1,12 @@
+{
+  "port": 2222,
+  "discovery": {
+    "host": "xxx.xxx.xxx.xxx",
+    "port": 8500
+  },
+  "datasource": {
+    "host": "xxx.xxx.xxx.xxx",
+    "port": 27017,
+    "db_name": "xxx"
+  }
+}

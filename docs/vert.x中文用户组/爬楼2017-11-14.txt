@@ -1,0 +1,17 @@
+1. ignite
+2. EventBus可以跨主机吗？ 集群模式可以的
+3. RoutingContext中只能传递JsonObject吗？不能传递JavaBean吗？
+
+public static String format(StatusCodeMsg code, Object data) {
+    JsonObject result = new JsonObject();
+    result.put("status", code.getCode());
+    result.put("msg", code.getMsg());
+    result.put("data", data);           // 不能put一个Object对象
+    return result.toString();
+}
+
+4. DeliveryOptions和MessageCodec还有集群EventBus
+5.
+
+
+

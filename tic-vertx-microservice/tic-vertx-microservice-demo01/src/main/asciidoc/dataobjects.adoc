@@ -1,0 +1,16 @@
+= Cheatsheets
+
+[[Account]]
+== Account
+
+
+[cols=">25%,^25%,50%"]
+[frame="topbot"]
+|===
+^|Name | Type ^| Description
+|[[balance]]`balance`|`Number (int)`|-
+|[[customerId]]`customerId`|`String`|-
+|[[id]]`id`|`String`|-
+|[[number]]`number`|`String`|-
+|===
+
