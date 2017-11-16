@@ -1,0 +1,17 @@
+= Cheatsheets
+
+[[Order]]
+== Order
+
+
+[cols=">25%,^25%,50%"]
+[frame="topbot"]
+|===
+^|Name | Type ^| Description
+|[[address]]`address`|`String`|-
+|[[amount]]`amount`|`Number (Double)`|-
+|[[consignee]]`consignee`|`String`|-
+|[[orderNo]]`orderNo`|`String`|-
+|[[region]]`region`|`String`|-
+|===
+

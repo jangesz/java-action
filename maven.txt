@@ -19,6 +19,10 @@ mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-javagc -DarchetypeGrou
 
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-javagc-basic -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
 
+//java8泛型
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-javagc-basic -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
+
+
 //java async future promise rxjava etc on
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-advanced -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DinteractiveMode=false -X
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-advanced-basic -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
