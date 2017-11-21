@@ -199,5 +199,6 @@
     <module>tic-vertx-bp</module>
     <module>tic-vertx-demos</module>
     <module>tic-vertx-microservice</module>
+    <module>tic-guice</module>
   </modules>
 </project>
