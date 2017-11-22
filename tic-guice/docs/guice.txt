@@ -1,0 +1,16 @@
+注入（Injection）
+绑定（Binding）
+作用域/生命周期（Scope）
+
+
+2. Spring的不足
+    手动wire：配置太过庞大
+    自动wire：复杂项目无法实现
+
+3. Guice的不同
+    取消xml
+    取消bean的概念
+    使用constructor注入，好处：不需要getter，setter，
+    支持泛型
+    是一个专注于DI的框架
+    
