@@ -1,0 +1,93 @@
+Ctrl + 1
+Cmd + 1
+剥离函数到外面
+
+
+ctrl + shitf + R 改名
+Cmd + shift + R 改名
+
+
+善于运用IDE提供的重构能力
+	Ctrl + 1 猜测下一步动作
+	Ctrl + Shift + R 重命名
+	先写代码，再让其编译通过，从上往下写
+	函数命名
+		从实现角度 - 精确描述函数干什么
+		从调用者角度 - 描述调用者的需求
+		两者不匹配 - 需要进行抽象的点
+
+
+
+
+
+intellij idea
+1. Alt + Enter
+2. Ctrl + Shift + Alt + T （查看所有重构的快捷键）
+
+
+
+
+Extract to method
+
+
+
+
+
+
+
+
+
+重构步骤
+1. 选中System.out.println("Hello World");	Ctrl + Alt + M，取名：kickOff
+2. 把kickOff这个函数名改成printSomeString来精确定义这个函数的作用，这样是否好呢？其实这个是违背这个函数的概念的，因为方法里面输出的字符串是写死的"Hello World"，
+那有的同学可能会想到在方法上添加一个参数，按照传入的字符串来输出具体的内容。这样的做法也是不好的，因为以后要改成什么样，现在很难确定，因为你很难往后看。所以尽量
+不要以参数的形式来限制一个方法的功能。慢慢往后重构，到后面会越来越清晰。
+3. 那这边我们的这个函数还不能叫printSomeString，还是改成printHelloWorld
+4. 虽然通过printHelloWorld函数的方式，把打印的逻辑提取出来了，但在一个类里面，还是面向过程的编程，我们需要改造成面向对象的方式，让它成为对象的一员
+5. 新建一个HelloWorldPrinter类，把printHelloWorld方法移动到这里，并且main方法里改成new HelloWorldPrinter().printHelloWorld();
+6. 现在回头看main方法，里面的new HelloWorldPrinter().printHelloWorld();现在这个Dependency解决了吗？没有解决，main方法中依然还是做的具体的一件事。从"."号的两边分别
+去改造，先改造new HelloWorldPrinter()，Ctrl + Alt + M，把new HelloWorldPrinter()提取成一个方法，取名getHelloWorldPrinter，这样main方法中就变成了getHelloWorldPrinter().printHelloWorld();其中getHelloWorldPrinter()这个方法再
+抽象一层，把他的名字改成getMainApplet，改完后getMainApplet()这个方法和实际做的事情（new HelloWorldPrinter()）又不符合了，但是不管如何改造，总会出现抽象到具体的转换，
+我们应该识别具体发生转换时的场景。我们这里可以新建一个类，Configuration，把发生转换的场景在Configuration中完成。把getMainApplet()这个函数移动到Configuration中。
+这样main函数就变成了Configuration.getMainApplet().printHelloWorld();
+7. 接下来改造"."右边的printHelloWorld()，这个太具体了，我们把它抽象成run，整个main的内容变成Configuration.getMainApplet().run();
+8. 选中run，Ctrl + Enter，在类中创建一个run方法。那么现在这个main中的是否就完全消除dependency了呢？答案是没有，这里有一个隐蔽的dependency没有被识别到，我们选中
+Configuration.getMainApplet()，然后提出成一个局部变量，Ctrl + Alt + V。main方法变成如下：
+
+		HelloWorldPrinter mainApplet = Configuration.getMainApplet();
+        mainApplet.run();
+
+9. 可以看到这个隐蔽的dependency（HelloWorldPrinter），也就是这里还是依赖了一个具体的HelloWorldPrinter的存在，其实我们的需求只要Configuration.getMainApplet()返回的
+能够提供一个run方法即可，而不是具体的某个实现类。所以我们把HelloWorldPrinter再往上抽象，改成MyApplet接口，该接口提供run方法。
+10. 选中未能编译的MyApplet，Alt + Enter，Create interface 'MyApplet'，
+11. 此时MyApplet mainApplet = Configuration.getMainApplet();会编译不通过，我们再次通过Alt + Enter，选择"Make 'getMainApplet' return ......MyApplet"
+12. 进入到Configuration类中，也有编译问题，先不管
+13. main方法中，局部变量mainApplet还没有run方法，也就是MyApplet这个接口还没有创建run方法，我们直接通过Alt + Enter，来给接口创建一个run方法，这样main方法中就编译通过了
+14. 回到12.这个编译问题，这里是因为HelloWorldPrinter这个类还没有实现MyApplet，我们只要简单的通过Alt + Enter，选择"Make 'HelloWorldPrinter' implement '.....MyApplet'"即可
+15. 在MyApplet这个接口中有个方法叫run，想到JDK中有个标准接口也提供一个run方法，Runnable，那么我们也利用起来，让MyApplet继承Runnable接口。
+16. 到这里为止，我们的面向对象化改造已经完成了。。。。。。。。。。。。。。。。。。。。。。。。。。
+17. 接下来要做的是：提取dependency
+18. 在HelloWorldPrinter这个类中，最终的核心算法在这里，即System.out.println("Hello World");我们需要对此提取dependency，我们把这句话分成三个部分，分别是：System.out、println、Hello World。System.out是输出到哪里，println是怎么输出，Hello World是输出的内容。
+29. 第一步：选中System.out，提出成成员变量（这里为什么不提取成方法了呢？因为之前在main方法中，它是static的方法，是面向过程的，我们要改造成面向对象，而现在我们是要提取出dependency。
+30. 选中System.out，Ctrl + Alt + V，把这个局部变量命名成destination。但是这个变量在这个类中作为局部变量是不够的，我们需要把它变成成员变量。Ctrl + Alt + F，这个命令是把变量改变成
+成员变量。
+31. 然后我们通过构造器的方式，把destination注入进来，相应的在Configuration中，创建HelloWorldPrinter的时候需要传入System.out作为dependency注入
+32. 第二部：把println，改成write，更加抽象，仅仅是输出，具体怎么输出，根据注入的dependency来选择
+33. 改成write方法后，编译不通过，又因为println依赖的PrintStream类是Java的类，我们无法去改造，所以只能构建一个自己的Destination叫MyDestination，是一个接口，里面提供一个write的方法。
+34. 第三步：改造Hello World这个String，、
+
+
+
+
+当必须创建一个类，并且这个类仅仅提供一种能力的时候，创建interface，然后让具体的实现类来提供某种具体的能力
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+示例程序Hello World
+    public class HelloWorld {
+        public static void main(String[] args) {
+            System.out.println("Hello World");
+        }
+    }
+
+核心算法？
+    - 向屏幕输出Hello World，这个是片面的思想，下面的才是正确的理解。
+    - 将指定内容输出到指定目标，这才是核心算法。
+
+开始剥离
+    - System.out（向哪里输出？）
+    - println（怎么输出？）
+    - "Hello World"（输出的内容？）
+
+    这三个东西，就叫做Dependency，我们在架构Dependency的时候，必须理解并剥离核心算法的Dependency，然后设计接口。
+
+开始改造Hello World
+    - 面向对象化
+    - 消除Dependency
+    - 用Guice来配置Dependency
+    
+
