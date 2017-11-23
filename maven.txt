@@ -23,6 +23,8 @@ mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-javagc-basic -Darchety
 
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-guice -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
 
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-keymaps -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
+
 
 //java async future promise rxjava etc on
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-advanced -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DinteractiveMode=false -X
