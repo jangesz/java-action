@@ -62,7 +62,18 @@
         一个module里面的东西，可能会被另外一个module里面的东西覆盖掉
         Modules.override(module1).with(module2)
 
+8. Guice的启动
+    Module何时被运行？
+    - Module里存放了很多表达式
+    - Module不被“运行”
+    - Guice.createInjector()时记录所有表达式
+    - createInjector做了什么事情？
+        - 记录了bind().to()的关系，这种映射关系被保存在一个map中，但是还没有创建真正的实例
+        - 记录了@Provides等注解的一个函数的关键字，保存在Guice中，还没有创建真正的实例
 
+    系统何时初始化
+    - 没有“初始化”的概念，没有Spring的Configuration Time
+    - injector.getInstance()时根据表达式调用构造函数
 
 技巧点：
     1. 没有实现的代码，直接throw new UnsupportedOperationException(); 防止一些测试性的代码交付到生产环境造成危害。
