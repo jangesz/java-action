@@ -44,10 +44,24 @@
         bind(List<String>.class)，这样是编译不过去的，需要使用Guice的TypeLiteral
         bind(new TypeLiteral<List<String>>(){}).toInstance(Arrays.asList("CNY", "EUR", "USD"));
 
-     5.7 集合绑定
+    5.7 集合绑定
+
 
 
 6. Guice在绑定的时候是不理会函数名的，只关注@注解 + 返回值
+
+
+7. 模块的组织
+    7.1 并列
+        Guice.createInjector(module1, module2, ...)
+
+    7.2 嵌套
+        大module套小module，利用install(module)
+
+    7.3 覆盖
+        一个module里面的东西，可能会被另外一个module里面的东西覆盖掉
+        Modules.override(module1).with(module2)
+
 
 
 技巧点：
