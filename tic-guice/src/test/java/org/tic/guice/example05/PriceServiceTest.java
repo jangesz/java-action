@@ -46,6 +46,10 @@ public class PriceServiceTest {
             }
         })).injectMembers(this);
 
+<<<<<<< Updated upstream
+=======
+        // 3.
+>>>>>>> Stashed changes
     }
 
 
