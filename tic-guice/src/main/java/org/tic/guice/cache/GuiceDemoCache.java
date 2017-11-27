@@ -19,5 +19,4 @@ public class GuiceDemoCache extends AbstractCache<String, String> {
         keyValues.put(key, value);
     }
 
-
 }
