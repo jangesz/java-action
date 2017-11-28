@@ -52,5 +52,6 @@
         <module>tic-vertx-bp-modular-route</module>
     <module>tic-vertx-bp-modular-route-shared</module>
     <module>tic-vertx-bp-serverless</module>
+    <module>tic-vertx-bp-guice</module>
   </modules>
 </project>

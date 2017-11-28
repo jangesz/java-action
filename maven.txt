@@ -80,6 +80,9 @@ mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-examples-jdbc-hi
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-bp -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DinteractiveMode=false -X
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-bp-modular-route -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-bp-modular-route-shared -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-bp-guice -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
+
+
 
 //about serverless
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-bp-serverless -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
