@@ -201,5 +201,6 @@
     <module>tic-vertx-microservice</module>
     <module>tic-guice</module>
     <module>tic-keymaps</module>
+    <module>tic-cdi</module>
   </modules>
 </project>

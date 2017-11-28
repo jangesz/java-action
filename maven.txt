@@ -92,3 +92,7 @@ mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-demos-blog -Darc
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-microservice -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DinteractiveMode=false -X
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-microservice-demo01 -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-vertx-microservice-demo02 -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
+
+//cdi
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-cdi -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DinteractiveMode=false -X
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-cdi-usecase -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
