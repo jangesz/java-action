@@ -7,13 +7,14 @@ import org.tic.vertx.bp.guice.demo01.AppConfig;
 
 import javax.inject.Inject;
 
-public class OrderVerticle extends AbstractVerticle {
-    private static final Logger logger = LoggerFactory.getLogger(OrderVerticle.class);
+public class MainVerticle extends AbstractVerticle {
+
+    private static final Logger logger = LoggerFactory.getLogger(MainVerticle.class);
 
     private AppConfig appConfig;
 
     @Inject
-    public OrderVerticle(AppConfig appConfig) {
+    public MainVerticle(AppConfig appConfig) {
         this.appConfig = appConfig;
     }
 
