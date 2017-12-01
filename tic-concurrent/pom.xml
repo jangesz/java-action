@@ -15,5 +15,6 @@
         <module>tic-concurrent-lock</module>
     <module>tic-concurrent-async</module>
     <module>tic-concurrent-threadpool</module>
+    <module>tic-concurrent-collections</module>
   </modules>
 </project>

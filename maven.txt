@@ -6,6 +6,8 @@ mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-concurrent-async -Darc
 
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-concurrent-threadpool -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
 
+mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-concurrent-collections -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -Dversion=0.0.1 -X
+
 
 mvn archetype:generate -DgroupId=org.tic -DartifactId=tic-netty -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DinteractiveMode=false -X
 
