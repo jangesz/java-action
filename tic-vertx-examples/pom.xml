@@ -63,5 +63,6 @@
     <module>tic-vertx-examples-jdbc-basic</module>
     <module>tic-vertx-examples-service-discovery-consul</module>
     <module>tic-vertx-examples-web-request</module>
+    <module>tic-vertx-examples-web-ueditor</module>
   </modules>
 </project>
