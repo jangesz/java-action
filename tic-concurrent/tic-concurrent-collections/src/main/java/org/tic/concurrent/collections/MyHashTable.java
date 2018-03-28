@@ -1,6 +1,7 @@
 package org.tic.concurrent.collections;
 
 import java.util.Hashtable;
+import java.util.LinkedHashMap;
 
 public class MyHashTable {
 
@@ -15,7 +16,7 @@ public class MyHashTable {
      */
     public static void main(String[] args) {
         Hashtable ht = new Hashtable();
-
+        LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
     }
 
 }
